@@ -1,13 +1,14 @@
-<h1 align="center">👋 Hi, I'm Xu Yan!</h1>
 <p align="center">
-  A passionate Full-Stack Developer exploring 3D applications, cloud integration, and modern tech stacks.<br>
-  📚 Final year Bachelor of computer and information Science student | 🌏 Based in New Zealand
+<img src="https://readme-typing-svg.demolab.com/?lines=👋+Hi,+I'm+Xu+Yan!;A+passionate+Full-Stack+Developer+exploring+3D+applications,+cloud+integration,+and+modern+tech+stacks.;%F0%9F%93%9A+Final+year+Bachelor+of+Computer+and+Information+Science+student+%7C+%F0%9F%8C%8F+Based+in+New+Zealand&center=true&color=FF69B4&background=F3E6FF&size=27" />
 </p>
 
 ## 📊 GitHub Metrics
 
-[![](https://raw.githubusercontent.com/sueyan9/metrics/master/github-metrics.svg)](https://github.com/lowlighter/metrics)
-
+<p align="center">
+  <a href="https://github.com/lowlighter/metrics">
+    <img src="https://raw.githubusercontent.com/sueyan9/metrics/master/github-metrics.svg" alt="GitHub Metrics" />
+  </a>
+</p>
 ## 🌐 GitHub Stats & Streak
 
 <table>
@@ -22,11 +23,7 @@
 </table>
 
 ## 📊 Top Languages
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&card_width=800" width="800"/>
-
-| ![JavaScript](https://img.shields.io/badge/JavaScript-77.21%25-yellow?style=flat-square&logo=javascript) | ![TypeScript](https://img.shields.io/badge/TypeScript-9.13%25-blue?style=flat-square&logo=typescript) | ![Java](https://img.shields.io/badge/Java-8.05%25-brown?style=flat-square&logo=java) | ![CSS](https://img.shields.io/badge/CSS-3.82%25-purple?style=flat-square&logo=css3) | ![HTML](https://img.shields.io/badge/HTML-1.17%25-orange?style=flat-square&logo=html5) | ![SCSS](https://img.shields.io/badge/SCSS-0.63%25-pink?style=flat-square&logo=sass) |
-|---|---|---|---|---|---|
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact"/>
 
 ## 🚀 Tech Stack
 
@@ -58,4 +55,6 @@
 - 💬 Discord: `#sueyan` 
 - 💼 LinkedIn: [xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
 ---
-
+<h1 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;加油—加Class—加Method!;Push+your+limits,+not+just+your+commits!;主函数就是你自己;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;编程路上不emo;Keep+coding,+no+emo;越Try越强;The+more+you+try,+the+better+you+get!&center=true&size=27&color=FF69B4&background=F3E6FF">
+</h1>
