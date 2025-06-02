@@ -68,5 +68,5 @@
 - 💼 LinkedIn: [xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
 ---
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;编程路上不emo;Keep+coding,+no+emo;;The+more+you+try,+the+better+you+get!&center=true&color=66CCFF&background=F8F3FF&size=30&width=1200&height=80">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线+(⊃｡•́‿•̀｡)⊃━✿✿✿✿✿✿;Code+hard,+dream+deploy!+٩(ˊᗜˋ*)و;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!+(｡•̀ᴗ-)✧;You're+the+main()+in+your+life+ヾ(≧▽≦*)o;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;Keep+coding,+no+emo+٩(◕‿◕｡)۶;;The+more+you+try,+the+better+you+get!+	(*￣▽￣)b&center=true&color=0FFCBE&background=106EBE&size=40&width=1200&height=150&font=Comic+Neue">
 </h1>
