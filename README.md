@@ -13,17 +13,17 @@
 <table>
   <tr>
     <td>
-      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&hide_border=true&bg_color=1a0026&title_color=00ffff&text_color=ff6ec7&icon_color=00ffff" />
+      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&hide_border=true&bg_color=e0c3fc&title_color=00ffff&text_color=ff6ec7&icon_color=00ffff" />
     </td>
     <td>
-      <img height="170px" src="https://streak-stats.demolab.com?user=sueyan9&hide_border=true&background=1A0026&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
+      <img height="170px" src="https://streak-stats.demolab.com?user=sueyan9&hide_border=true&background=E0C3FC&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
     </td>
   </tr>
 </table>
 
 ## 📊 Top Languages
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&theme=default)
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&theme=default&card_width=800" width="800"/>
 
 ## 🚀 Tech Stack
 
