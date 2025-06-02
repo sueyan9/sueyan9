@@ -70,5 +70,6 @@
   
 ##
 <h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;Keep+coding,+no+emo;The+more+you+try,+the+better+you+get!&center=true&color=0FFCBE&background=106EBE&size=40&width=1200&height=150&font=Comic+Neue">
+  <img src="https://readme-typing-svg.demolab.com/?lines=%E4%BB%A3%E7%A0%81%E6%95%B2%E7%83%82%2C%E6%A2%A6%E6%83%B3%E4%B8%8A%E7%BA%BF%3BCode+hard%2C+dream+deploy!%3B%E5%A4%A9%E9%81%93%E9%85%AC%E5%8B%A4%2Cwhile(1)%2B%E5%8A%AA%E5%8A%9B%3BHard+work+pays%2C+even+in+infinite+loops%3Bbug%E4%B8%8D%E6%80%95%2C%E6%88%91%E8%87%AAdebug%3BNo+fear+of+bugs%2C+I+am+the+debugger!%3BPush+your+limits%2C+not+just+your+commits!%3BYou%27re+the+main()%2B+in+your+life%3BCtrl%2BS+%E4%BF%9D%E5%AD%98%E6%9C%AA%E6%9D%A5%3BCtrl%2BS+to+save+your+future%3BKeep+coding%2C+no+emo%3BThe+more+you+try%2C+the+better+you+get!&center=true&color=0FFCBE&background=106EBE&size=40&width=1200&height=150&font=Comic+Neue">
+</h1>
 </h1>
