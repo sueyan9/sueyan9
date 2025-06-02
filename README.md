@@ -51,10 +51,16 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40" height="40"/>
 </p>
 
+## 🏆 3D GitHub Contributions
+
+<p align="center">
+  <img src="./profile-3d-contrib.svg" />
+</p>
+
 ## 📫 Contact Me
 - 💬 Discord: `#sueyan` 
 - 💼 LinkedIn: [xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
 ---
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;加油—加Class—加Method!;Push+your+limits,+not+just+your+commits!;主函数就是你自己;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;编程路上不emo;Keep+coding,+no+emo;越Try越强;The+more+you+try,+the+better+you+get!&center=true&size=27&color=FF69B4&background=F3E6FF">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;编程路上不emo;Keep+coding,+no+emo;;The+more+you+try,+the+better+you+get!&center=true&size=45&color=FF69B4&background=F3E6FF&width=1000">
 </h1>
