@@ -3,27 +3,25 @@
   A passionate Full-Stack Developer exploring 3D applications, cloud integration, and modern tech stacks.<br>
   📚 Final year Bachelor of computer and information Science student | 🌏 Based in New Zealand
 </p>
----
 
-   ### 📊 GitHub Metrics
+## 📊 GitHub Metrics
 
 [![](https://raw.githubusercontent.com/sueyan9/metrics/master/github-metrics.svg)](https://github.com/lowlighter/metrics)
 
----
 ## 🌐 GitHub Stats & Streak
 
 <table>
   <tr>
     <td>
-      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&theme=radical&bg_color=00000000&hide_border=true" />
+      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&hide_border=true&bg_color=1a0026&title_color=00ffff&text_color=ff6ec7&icon_color=00ffff" />
     </td>
     <td>
-      <img height="170px" src="https://streak-stats.demolab.com/?user=sueyan9&theme=radical&background=00000000&hide_border=true" />
+      <img height="170px" src="https://streak-stats.demolab.com?user=sueyan9&hide_border=true&background=1A0026&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
     </td>
   </tr>
 </table>
----
-### 📊 Top Languages
+
+## 📊 Top Languages
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&theme=default)
 
@@ -35,18 +33,22 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" width="40" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" width="40" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40" height="40" title="React Native"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="40" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40" title="Spring Boot"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="40" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="40" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="40" />
-  <img src="https://img.shields.io/badge/-React_Native-61DAFB?style=flat-square&logo=react&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white" />
-  <img src="https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Azure-0078D4?style=flat-square&logo=microsoft-azure&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Blender-F5792A?style=flat-square&logo=blender&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <!-- TypeScript -->
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="40" height="40"/>
+ <!-- Python -->
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" height="40"/>
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" width="40" height="40"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" width="40" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40" height="40"/>
 </p>
 
 ## 📫 Contact Me
