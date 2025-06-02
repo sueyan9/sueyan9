@@ -66,7 +66,8 @@
 ## 📫 Contact Me
 - 💬 Discord: `#sueyan` 
 - 💼 LinkedIn: [xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
----
+  
+##
 <h1 align="center">
   <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线+(⊃｡•́‿•̀｡)⊃━✿✿✿✿✿✿;Code+hard,+dream+deploy!+٩(ˊᗜˋ*)و;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!+(｡•̀ᴗ-)✧;You're+the+main()+in+your+life+ヾ(≧▽≦*)o;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;Keep+coding,+no+emo+٩(◕‿◕｡)۶;;The+more+you+try,+the+better+you+get!+	(*￣▽￣)b&center=true&color=0FFCBE&background=106EBE&size=40&width=1200&height=150&font=Comic+Neue">
 </h1>
