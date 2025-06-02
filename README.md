@@ -25,14 +25,8 @@
 
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&card_width=800" width="800"/>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-77.21%25-yellow?style=flat-square&logo=javascript" />
-  <img src="https://img.shields.io/badge/TypeScript-9.13%25-blue?style=flat-square&logo=typescript" />
-  <img src="https://img.shields.io/badge/Java-8.05%25-brown?style=flat-square&logo=java" />
-  <img src="https://img.shields.io/badge/CSS-3.82%25-purple?style=flat-square&logo=css3" />
-  <img src="https://img.shields.io/badge/HTML-1.17%25-orange?style=flat-square&logo=html5" />
-  <img src="https://img.shields.io/badge/SCSS-0.63%25-pink?style=flat-square&logo=sass" />
-</p>
+| ![JavaScript](https://img.shields.io/badge/JavaScript-77.21%25-yellow?style=flat-square&logo=javascript) | ![TypeScript](https://img.shields.io/badge/TypeScript-9.13%25-blue?style=flat-square&logo=typescript) | ![Java](https://img.shields.io/badge/Java-8.05%25-brown?style=flat-square&logo=java) | ![CSS](https://img.shields.io/badge/CSS-3.82%25-purple?style=flat-square&logo=css3) | ![HTML](https://img.shields.io/badge/HTML-1.17%25-orange?style=flat-square&logo=html5) | ![SCSS](https://img.shields.io/badge/SCSS-0.63%25-pink?style=flat-square&logo=sass) |
+|---|---|---|---|---|---|
 
 ## 🚀 Tech Stack
 
