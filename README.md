@@ -1,5 +1,11 @@
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com/?lines=👋+Hi,+I'm+Xu+Yan!;A+passionate+Full-Stack+Developer+exploring+3D+applications,+cloud+integration,+and+modern+tech+stacks.;%F0%9F%93%9A+Final+year+Bachelor+of+Computer+and+Information+Science+student+%7C+%F0%9F%8C%8F+Based+in+New+Zealand&center=true&color=FF69B4&background=F3E6FF&size=27" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=400&lines=Hi%2C+I'm+Xu+Yan!" />
+</p>
+
+<p align="center">
+  A passionate Full-Stack Developer exploring 3D applications, cloud integration, and modern tech stacks. <br />
+  📚 Final year Bachelor of Computer and Information Science student <br />
+  🌏 Based in New Zealand
 </p>
 
 ## 📊 GitHub Metrics
@@ -54,7 +60,7 @@
 ## 🏆 3D GitHub Contributions
 
 <p align="center">
-  <img src="./profile-3d-contrib.svg" />
+  <img src="https://raw.githubusercontent.com/sueyan9/sueyan9/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" alt="3D contribution graph"/>
 </p>
 
 ## 📫 Contact Me
@@ -62,5 +68,5 @@
 - 💼 LinkedIn: [xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
 ---
 <h1 align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;编程路上不emo;Keep+coding,+no+emo;;The+more+you+try,+the+better+you+get!&center=true&size=45&color=FF69B4&background=F3E6FF&width=1000">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=代码敲烂,梦想上线;Code+hard,+dream+deploy!;天道酬勤,while(1)+努力;Hard+work+pays,+even+in+infinite+loops;bug不怕,我自debug;No+fear+of+bugs,+I+am+the+debugger!;Push+your+limits,+not+just+your+commits!;You're+the+main()+in+your+life;Ctrl+S+保存未来;Ctrl+S+to+save+your+future;编程路上不emo;Keep+coding,+no+emo;;The+more+you+try,+the+better+you+get!&center=true&size=30&color=FF69B4&background=F3E6FF&width=1000">
 </h1>
