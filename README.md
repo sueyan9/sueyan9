@@ -13,7 +13,7 @@
 <table>
   <tr>
     <td>
-      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&hide_border=true&bg_color=e0c3fc&title_color=00ffff&text_color=ff6ec7&icon_color=00ffff" />
+      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&hide_border=true&bg_color=e0c3fc&title_color=00ffff&text_color=ff6ec7&icon_color=00ffff&hide_rank=true" />
     </td>
     <td>
       <img height="170px" src="https://streak-stats.demolab.com?user=sueyan9&hide_border=true&background=E0C3FC&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
@@ -23,7 +23,16 @@
 
 ## 📊 Top Languages
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&theme=default&card_width=800" width="800"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact&card_width=800" width="800"/>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-77.21%25-yellow?style=flat-square&logo=javascript" />
+  <img src="https://img.shields.io/badge/TypeScript-9.13%25-blue?style=flat-square&logo=typescript" />
+  <img src="https://img.shields.io/badge/Java-8.05%25-brown?style=flat-square&logo=java" />
+  <img src="https://img.shields.io/badge/CSS-3.82%25-purple?style=flat-square&logo=css3" />
+  <img src="https://img.shields.io/badge/HTML-1.17%25-orange?style=flat-square&logo=html5" />
+  <img src="https://img.shields.io/badge/SCSS-0.63%25-pink?style=flat-square&logo=sass" />
+</p>
 
 ## 🚀 Tech Stack
 
