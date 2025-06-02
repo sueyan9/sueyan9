@@ -1,16 +1,16 @@
-## Hi there 👋
+# 👋 Hi, I'm Xu Yan!
+I’m a software developer passionate about full-stack development.
+🎓 Currently in my final year of a Bachelor's degree in Software Engineering.
 
-<!--
-**sueyan9/sueyan9** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+   ### 📊 GitHub Metrics
 
-Here are some ideas to get you started:
+[![](https://raw.githubusercontent.com/sueyan9/metrics/master/github-metrics.svg)](https://github.com/lowlighter/metrics)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 📫 Contact Me
+- 💬 Discord: `#sueyan` 
+- 💼 LinkedIn: [xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
+
+
+### 🧮 GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&theme=radical)
