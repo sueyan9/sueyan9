@@ -1,7 +1,7 @@
 <h1 align="center">👋 Hi, I'm Xu Yan!</h1>
 <p align="center">
   A passionate Full-Stack Developer exploring 3D applications, cloud integration, and modern tech stacks.<br>
-  📚 Final year Computer Science student | 🌏 Based in New Zealand
+  📚 Final year Bachelor of computer and information Science student | 🌏 Based in New Zealand
 </p>
 ---
    ### 📊 GitHub Metrics
