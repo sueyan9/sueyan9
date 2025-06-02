@@ -4,6 +4,7 @@
   📚 Final year Bachelor of computer and information Science student | 🌏 Based in New Zealand
 </p>
 ---
+
    ### 📊 GitHub Metrics
 
 [![](https://raw.githubusercontent.com/sueyan9/metrics/master/github-metrics.svg)](https://github.com/lowlighter/metrics)
