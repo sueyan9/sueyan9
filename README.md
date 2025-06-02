@@ -1,17 +1,22 @@
-# 👋 Hi, I'm Xu Yan!
-I’m a software developer passionate about full-stack development.
-🎓 Currently in my final year of a Bachelor's degree in Software Engineering.
-
+<h1 align="center">👋 Hi, I'm Xu Yan!</h1>
+<p align="center">
+  A passionate Full-Stack Developer exploring 3D applications, cloud integration, and modern tech stacks.<br>
+  📚 Final year Computer Science student | 🌏 Based in New Zealand
+</p>
+---
    ### 📊 GitHub Metrics
 
 [![](https://raw.githubusercontent.com/sueyan9/metrics/master/github-metrics.svg)](https://github.com/lowlighter/metrics)
 
+---
+## 🌐 GitHub Stats & Streak
 
-### 🧮 GitHub Stats
+<p align="center">
+  <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&theme=radical" />
+  <img height="170px" src="https://streak-stats.demolab.com/?user=sueyan9&theme=radical" />
+</p>
 
-<div align="center"> 
-  <img height="137px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&hide_title=true&hide_border=true&show_icons=true&line_height=21&text_color=000&icon_color=000&bg_color=0,ea6161,ffc64d,fffc4d,52fa5a&theme=graywhite" />
-</div>
+---
 ### 📊 Top Languages
 
 <div align="center"> 
