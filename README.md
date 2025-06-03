@@ -58,7 +58,7 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40" height="40"/>
 </p>
 
-## 🏆 3D GitHub Contributions
+## 🏆 3D GitHub Contributions Graph
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/sueyan9/sueyan9/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" alt="3D contribution graph"/>
