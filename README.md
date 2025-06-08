@@ -8,7 +8,8 @@
   🌏 Based in New Zealand
 </p>
 
-## 📊 GitHub Metrics
+## ![image](https://github.com/user-attachments/assets/53b74ab5-b666-4977-8be0-2890b86e057e)
+ GitHub Metrics
 
 <p align="center">
   <a href="https://github.com/lowlighter/metrics">
