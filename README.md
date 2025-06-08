@@ -8,8 +8,7 @@
   🌏 Based in New Zealand
 </p>
 
-## ![image](https://github.com/user-attachments/assets/53b74ab5-b666-4977-8be0-2890b86e057e)
- GitHub Metrics
+## 📈 GitHub Metrics
 
 <p align="center">
   <a href="https://github.com/lowlighter/metrics">
@@ -30,7 +29,7 @@
   </tr>
 </table>
 
-## 📊 Top Languages
+## 📉 Top Languages
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact"/>
 
 ## 🚀 Tech Stack
