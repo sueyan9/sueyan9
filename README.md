@@ -16,6 +16,12 @@
   </a>
 </p>
 
+## 🏆 3D GitHub Contributions Graph
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sueyan9/sueyan9/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" alt="3D contribution graph"/>
+</p>
+
 ## 🌐 GitHub Stats & Streak
 
 <table>
@@ -58,11 +64,6 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40" height="40"/>
 </p>
 
-## 🏆 3D GitHub Contributions Graph
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/sueyan9/sueyan9/refs/heads/main/profile-3d-contrib/profile-season-animate.svg" alt="3D contribution graph"/>
-</p>
 
 ## 📫 Contact Me
 - 💬 [![Discord](https://img.shields.io/badge/Discord-%23sueyan-5865F2?logo=discord&logoColor=white)](https://discord.com/)
