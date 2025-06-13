@@ -1,3 +1,7 @@
+
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Pacifico&size=30&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=400&lines=Hi%2C+welcome+to+my+page!" />
+</p>
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Pacifico&size=30&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=400&lines=Hi%2C+welcome+to+my+page!" />
 </p>
