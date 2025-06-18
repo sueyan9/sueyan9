@@ -29,8 +29,6 @@
     <td>
       <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&show_icons=true&hide_border=true&bg_color=e0c3fc&title_color=00ffff&text_color=ff6ec7&icon_color=00ffff&hide_rank=true&include_all_commits=true" />
     </td>
-
-    
     <td>
       <img height="170px" src="https://streak-stats.demolab.com?user=sueyan9&hide_border=true&background=E0C3FC&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
     </td>
