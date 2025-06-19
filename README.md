@@ -36,8 +36,8 @@
   </tr>
 </table>
 
-## 📉 Top Languages
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sueyan9&layout=compact"/>
+## 📉 GitHub Activity Graph
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=sueyan9&theme=github-compact" />
 
 ## 🚀 Tech Stack
 
