@@ -31,7 +31,7 @@
     </td>
     <td>
      <img height="170px" 
-  src="https://github-readme-streak-stats.herokuapp.com?user=sueyan9)&hide_border=true&background=E0C3FC&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
+  src="https://github-readme-streak-stats.herokuapp.com?user=sueyan9&hide_border=true&background=E0C3FC&ring=FF6EC7&currStreakLabel=00FFFF&fire=FF6EC7&sideNums=00FFFF&sideLabels=FF6EC7" />
     </td>
   </tr>
 </table>
