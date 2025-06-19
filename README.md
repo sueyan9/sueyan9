@@ -27,7 +27,7 @@
 <table>
   <tr>
     <td>
-      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&hide_rank=true&theme=tokyonight" />
+      <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&hide_rank=true" />
     </td>
     <td>
      <img height="170px" 
