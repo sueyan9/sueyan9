@@ -31,7 +31,7 @@
     </td>
     <td>
      <img height="170px" 
-  src="https://github-readme-streak-stats.herokuapp.com?user=sueyan9"/>
+  src="https://github-readme-streak-stats.herokuapp.com?user=sueyan9"alt="GitHub Streak" />
     </td>
   </tr>
 </table>
