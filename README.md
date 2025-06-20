@@ -30,8 +30,8 @@
       <img height="170px" src="https://github-readme-stats.vercel.app/api?username=sueyan9&hide_rank=true" />
     </td>
     <td>
-     <img height="170px" 
-  src="https://github-readme-streak-stats.herokuapp.com?user=sueyan9"alt="GitHub Streak" />
+     <img height="170px" src="https://streak-stats.demolab.com?user=sueyan9" />
+
     </td>
   </tr>
 </table>
