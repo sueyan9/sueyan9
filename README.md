@@ -69,7 +69,7 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="40" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/>
   <img src="https://img.icons8.com/color/48/3d-printer.png" width="40" alt="3D Printing" />
- 
+  <img src="https://www.rhino3d.com/images/rhino-logo.png" width="40" alt="Rhino" />
 </p>
 
 
