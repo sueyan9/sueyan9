@@ -53,13 +53,13 @@ const QUERY = /* GraphQL */ `
           }
         }
 
-        commitContributionsByRepository(maxRepositories: 200) {
+        commitContributionsByRepository(maxRepositories: 100) {
           repository { nameWithOwner }
         }
-        issueContributionsByRepository(maxRepositories: 200) {
+        issueContributionsByRepository(maxRepositories: 100) {
           repository { nameWithOwner }
         }
-        pullRequestContributionsByRepository(maxRepositories: 200) {
+        pullRequestContributionsByRepository(maxRepositories: 100) {
           repository { nameWithOwner }
         }
       }
@@ -73,10 +73,11 @@ const cc = u.contributionsCollection;
 
 // ---- 计算过去一年“参与过的仓库数”（提交/PR/Issue 的并集去重） ----
 const uniqRepos = new Set([
-  ...cc.commitContributionsByRepository.map(x => x.repository.nameWithOwner),
-  ...cc.issueContributionsByRepository.map(x => x.repository.nameWithOwner),
-  ...cc.pullRequestContributionsByRepository.map(x => x.repository.nameWithOwner),
+  ...((cc.commitContributionsByRepository ?? []).map(x => x.repository.nameWithOwner)),
+  ...((cc.issueContributionsByRepository ?? []).map(x => x.repository.nameWithOwner)),
+  ...((cc.pullRequestContributionsByRepository ?? []).map(x => x.repository.nameWithOwner)),
 ]);
+
 const contributedToLastYear = uniqRepos.size;
 
 // ---- 计算 streak（到“今天”为止的连续天数 & 历史最长） ----
