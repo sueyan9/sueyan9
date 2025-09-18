@@ -1,9 +1,15 @@
 name: Update README SVGs
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: "SVG theme"
+        type: choice
+        options: [vue, ayu_light, default_light, swift, rose_pine, rose_pine_dawn, slate, midnight, sunset]
+        default: vue
   schedule:
-    - cron: "0 3 * * *"   # 每天 03:00 UTC 自动更新（不需要就删）
+    - cron: "0 3 * * *"   # daily at 03:00 UTC
 
 permissions:
   contents: write
@@ -22,16 +28,27 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate SVGs
+      # If triggered by schedule, auto-rotate theme
+      - name: Pick theme (auto rotate)
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          themes=(vue ayu_light default_light swift rose_pine rose_pine_dawn slate midnight sunset)
+          idx=$(( $(date -u +%j) % ${#themes[@]} ))
+          echo "SVG_THEME=${themes[$idx]}" >> $GITHUB_ENV
+          echo "NUM_STYLE=pill" >> $GITHUB_ENV
+
+      # If manually dispatched with input, respect input.theme
+      - name: Use manual theme (workflow_dispatch)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.theme != '' }}
+        run: echo "SVG_THEME=${{ inputs.theme }}" >> $GITHUB_ENV
+
+      - name: Generate real SVGs
         env:
-          GH_LOGIN: ${{ github.repository_owner }}
-          # 如需包含私有贡献：在 repo 的 Settings → Secrets 新建 PAT_READ_USER，
-          # 至少勾选：read:user 和 repo（只读）
-          PAT_READ_USER: ${{ secrets.PAT_READ_USER }}
-          # 样式选项
-          SVG_THEME: "midnight"   # slate | midnight | sunset
-          ACCENT:    "#22d3ee"    # 数字高亮色
-          NUM_STYLE: "pill"       # accent | pill
+          GH_LOGIN:      ${{ github.repository_owner }}
+          PAT_READ_USER: ${{ secrets.PAT_READ_USER }}  # optional, include private contrib if scope allows
+          ACCENT:        "#22d3ee"
+          NUM_STYLE:     "pill"
+          # Note: SVG_THEME comes from $GITHUB_ENV (above steps)
         run: |
           node --version
           node scripts/generate-svgs.mjs
@@ -40,19 +57,13 @@ jobs:
       - name: Bust README image cache (?ver=timestamp)
         run: |
           TS=$(date +%s)
-          touch README.md
-          for f in stats.svg streak.svg; do
-            if grep -q "assets/$f\\?ver=" README.md; then
-              sed -i -E "s#(assets/$f)\\?ver=[0-9]+#\\1?ver=$TS#g" README.md
-            else
-              sed -i -E "s#(assets/$f)(\"|')#\\1?ver=$TS\\2#g" README.md
-            fi
-          done
+          # Replace or append ?ver=TS to both images
+          sed -i -E 's#(assets/(stats|streak)\.svg)(\?ver=[0-9]+)?#\1?ver='"$TS"'#g' README.md
 
       - name: Commit & push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets README.md
-          git diff --cached --quiet || git commit -m "chore(assets): update stats & streak svgs (cache-bust) [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: update SVGs (theme=$SVG_THEME)"
           git push
