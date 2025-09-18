@@ -3,7 +3,7 @@ name: Update README SVGs
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "0 3 * * *"  # 每天 03:00 UTC 自动跑；不需要就删掉
+    - cron: "0 3 * * *"   # 每天 03:00 UTC 自动更新（不需要就删）
 
 permissions:
   contents: write
@@ -22,20 +22,22 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate real SVGs
+      - name: Generate SVGs
         env:
           GH_LOGIN: ${{ github.repository_owner }}
-          # 若需要统计“私有贡献”，在 repo Settings -> Secrets 创建 PAT_READ_USER
-          # 令牌需要最少 scopes：read:user, repo（只读）
+          # 如需包含私有贡献：在 repo 的 Settings → Secrets 新建 PAT_READ_USER，
+          # 至少勾选：read:user 和 repo（只读）
           PAT_READ_USER: ${{ secrets.PAT_READ_USER }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SVG_THEME: midnight   # slate / midnight / sunset
+          # 样式选项
+          SVG_THEME: "midnight"   # slate | midnight | sunset
+          ACCENT:    "#22d3ee"    # 数字高亮色
+          NUM_STYLE: "pill"       # accent | pill
         run: |
           node --version
           node scripts/generate-svgs.mjs
           ls -la assets
 
-      - name: Bust README image cache (append or update ?ver=timestamp)
+      - name: Bust README image cache (?ver=timestamp)
         run: |
           TS=$(date +%s)
           touch README.md
@@ -43,7 +45,6 @@ jobs:
             if grep -q "assets/$f\\?ver=" README.md; then
               sed -i -E "s#(assets/$f)\\?ver=[0-9]+#\\1?ver=$TS#g" README.md
             else
-              # 在第一个出现的 src=...assets/$f 之后插入 ?ver=TS
               sed -i -E "s#(assets/$f)(\"|')#\\1?ver=$TS\\2#g" README.md
             fi
           done
