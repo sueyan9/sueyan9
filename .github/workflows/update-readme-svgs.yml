@@ -1,9 +1,9 @@
 name: Update README SVGs
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
   schedule:
-    - cron: '0 2 * * 1'  # 每周一 02:00 UTC，按需修改或删除
+    - cron: "0 3 * * *"  # 每天 03:00 UTC 自动跑；不需要就删掉
 
 permissions:
   contents: write
@@ -12,11 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,22 +25,33 @@ jobs:
       - name: Generate real SVGs
         env:
           GH_LOGIN: ${{ github.repository_owner }}
-          # 如需私有贡献，请改用你的 PAT：
-          # GITHUB_TOKEN: ${{ secrets.PAT_READ_USER }}
+          # 若需要统计“私有贡献”，在 repo Settings -> Secrets 创建 PAT_READ_USER
+          # 令牌需要最少 scopes：read:user, repo（只读）
+          PAT_READ_USER: ${{ secrets.PAT_READ_USER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SVG_THEME: midnight   # slate / midnight / sunset
         run: |
           node --version
           node scripts/generate-svgs.mjs
           ls -la assets
 
+      - name: Bust README image cache (append or update ?ver=timestamp)
+        run: |
+          TS=$(date +%s)
+          touch README.md
+          for f in stats.svg streak.svg; do
+            if grep -q "assets/$f\\?ver=" README.md; then
+              sed -i -E "s#(assets/$f)\\?ver=[0-9]+#\\1?ver=$TS#g" README.md
+            else
+              # 在第一个出现的 src=...assets/$f 之后插入 ?ver=TS
+              sed -i -E "s#(assets/$f)(\"|')#\\1?ver=$TS\\2#g" README.md
+            fi
+          done
+
       - name: Commit & push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B main
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes"; exit 0
-          fi
-          git commit -m "chore(assets): update stats & streak svgs"
-          git push origin main
+          git add assets README.md
+          git diff --cached --quiet || git commit -m "chore(assets): update stats & streak svgs (cache-bust) [skip ci]"
+          git push
