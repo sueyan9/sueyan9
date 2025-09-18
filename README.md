@@ -27,13 +27,14 @@
 <table>
   <tr>
     <td>
-      <img height="170" src="./assets/stats.svg" />
+      <img height="170" src="./assets/stats.svg?ver=1" />
     </td>
     <td>
-      <img height="170" src="./assets/streak.svg" alt="GitHub Streak" />
+      <img height="170" src="./assets/streak.svg?ver=1" />
     </td>
   </tr>
 </table>
+
 
 ## 📉 GitHub Activity Graph
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=sueyan9&theme=github-compact" />
