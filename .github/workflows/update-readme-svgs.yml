@@ -1,0 +1,62 @@
+name: Update README SVGs
+
+on:
+  schedule:
+    - cron: "0 1 * * *"  # 每天 01:00 UTC 更新一次
+  workflow_dispatch:      # 允许手动运行
+
+permissions:
+  contents: write         # 允许推送变更
+
+env:
+  USERNAME: sueyan9
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch cards as static SVGs
+        run: |
+          set -e
+          mkdir -p assets
+
+          fetch() {
+            url="$1"
+            out="$2"
+            tmp="$(mktemp)"
+            echo "Fetching $url"
+            # -f 失败退出, -S 显示错误, -L 跟随重定向
+            if curl -fsSL --max-time 30 "$url" -o "$tmp"; then
+              # 只在确实拿到 SVG 时才覆盖
+              if grep -q "<svg" "$tmp"; then
+                mv "$tmp" "$out"
+                echo "Saved to $out"
+              else
+                echo "Not an SVG (possibly rate limited). Skip writing $out"
+                rm -f "$tmp"
+              fi
+            else
+              echo "curl failed for $url"
+              rm -f "$tmp"
+            fi
+          }
+
+          # Stats（anuraghazra）
+          fetch "https://github-readme-stats.vercel.app/api?username=${USERNAME}&hide_rank=true" "assets/stats.svg"
+
+          # Streak（新域名）
+          fetch "https://streak-stats.demolab.com?user=${USERNAME}" "assets/streak.svg"
+
+      - name: Commit changes if any
+        run: |
+          if git diff --quiet -- assets; then
+            echo "No SVG changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/*.svg
+            git commit -m "chore: refresh README SVGs [skip ci]"
+            git push
+          fi
