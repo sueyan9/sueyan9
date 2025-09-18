@@ -1,10 +1,9 @@
-# .github/workflows/update-readme-svgs.yml
 name: Update README SVGs
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * 1'   # 每周一 02:00 UTC 可改/删
+    - cron: '0 2 * * 1'  # 每周一 02:00 UTC，按需修改或删除
 
 permissions:
   contents: write
@@ -19,12 +18,20 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Generate SVGs (demo)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate real SVGs
+        env:
+          GH_LOGIN: ${{ github.repository_owner }}
+          # 如需私有贡献，请改用你的 PAT：
+          # GITHUB_TOKEN: ${{ secrets.PAT_READ_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p assets
-          # 先放占位以验证 push
-          echo '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="150"><text x="20" y="80" font-size="24">stats placeholder</text></svg>' > assets/stats.svg
-          echo '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="150"><text x="20" y="80" font-size="24">streak placeholder</text></svg>' > assets/streak.svg
+          node --version
+          node scripts/generate-svgs.mjs
           ls -la assets
 
       - name: Commit & push
@@ -34,7 +41,7 @@ jobs:
           git checkout -B main
           git add -A
           if git diff --cached --quiet; then
-            echo "No changes to commit"; exit 0
+            echo "No changes"; exit 0
           fi
           git commit -m "chore(assets): update stats & streak svgs"
           git push origin main
