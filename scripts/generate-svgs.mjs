@@ -87,6 +87,45 @@ const QUERY = /* GraphQL */ `
 
 // ----------- 主题样式 -----------
 const THEMES = {
+  // 纯白清爽：最接近你现在的 default_light
+  default_light: {
+    bg1: "#ffffff", bg2: "#f8fafc", border: "#e5e7eb",
+    title: "#0f172a", label: "#475569", value: "#0b1220",
+    accent: "#2563eb", dot: "#e2e8f0"
+  },
+
+  // vue：浅绿+白
+  vue: {
+    bg1: "#ffffff", bg2: "#f2fbf7", border: "#d8f3e6",
+    title: "#0f3b2e", label: "#2b5c45", value: "#0b3d2c",
+    accent: "#41b883", dot: "#cce9dd"
+  },
+
+  // ayu-light：米白+柔和橙
+  ayu_light: {
+    bg1: "#fffaf5", bg2: "#faf3ea", border: "#eee4d9",
+    title: "#1f2430", label: "#6c6f93", value: "#1f2430",
+    accent: "#ff9940", dot: "#e9ded1"
+  },
+
+  // swift：浅色+粉紫点缀
+  swift: {
+    bg1: "#fff7fb", bg2: "#f5f3ff", border: "#eadff7",
+    title: "#5b21b6", label: "#7c3aed", value: "#4c1d95",
+    accent: "#a855f7", dot: "#e9d5ff"
+  },
+
+  // rosé pine（dawn/light）
+  rose_pine: { // dawn
+    bg1: "#fffaf3", bg2: "#faf4ed", border: "#f2e9e1",
+    title: "#575279", label: "#797593", value: "#575279",
+    accent: "#b4637a", dot: "#eaddcf"
+  },
+  rose_pine_dawn: { // 另一种点缀（青绿）
+    bg1: "#fffaf3", bg2: "#faf4ed", border: "#f2e9e1",
+    title: "#575279", label: "#797593", value: "#575279",
+    accent: "#286983", dot: "#eaddcf"
+  },
   slate: {
     bgTop: "#f8fafc", bgBottom: "#eef2f7",
     border: "#e5e7eb",
@@ -109,49 +148,48 @@ const THEMES = {
     dots: "#f6c49d"
   }
 };
-const THEME = THEMES[SVG_THEME] ?? THEMES.midnight;
+// 友好别名
+THEMES["ayu-light"] = THEMES.ayu_light;
+THEMES["default"] = THEMES.default_light;
+THEMES["rose_pine_light"] = THEMES.rose_pine;
+
+const SVG_THEME = (process.env.SVG_THEME || "default_light").toLowerCase();
+const THEME = THEMES[SVG_THEME] ?? THEMES.default_light;
+
+// 数字高亮：可被环境变量覆盖
+const ACCENT   = process.env.ACCENT   || THEME.accent;
+const NUM_STYLE = (process.env.NUM_STYLE || "accent").toLowerCase(); // "accent" | "pill"
 
 // ----------- 工具 -----------
 const fmt = (n) => (typeof n === "number") ? n.toLocaleString("en-US") : String(n);
 
-// SVG 卡片（支持图标 + 数字高亮）
-const card = (title, rows, opts = {}) => {
-  const {
-    width = 920,
-    icon = "",       // 例如 "📈" / "🔥"
-    theme = THEME,
-  } = opts;
+// A themed card (gradient background + optional pill for numbers)
+const card = (title, rows, width = 920) => {
+  const pad = 22, th = 30, lh = 34;
+  const h = pad + th + 14 + rows.length * lh + pad;
 
-  const pad = 22;
-  const th = 30;               // title height
-  const lh = 34;               // row line height
-  const h  = pad + th + 14 + rows.length * lh + pad;
-
-  const estTextWidth = (s, fontSize = 22) =>
-    Math.round(String(s).length * (fontSize * 0.62)) + 20;
+  const estTextWidth = (s, fontSize = 22) => Math.round(String(s).length * (fontSize * 0.62)) + 20;
 
   const rowsSvg = rows.map((r, i) => {
     const y = pad + th + 14 + (i + 1) * lh;
-    const label = r[0];
-    const value = r[1];
+    const label = r[0], value = r[1];
     const right = width - 24;
 
     let pill = "";
     if (NUM_STYLE === "pill") {
       const w = estTextWidth(value, 24);
       const x = right - w;
-      pill =
-        `<rect x="${x}" y="${y - 24}" width="${w}" height="28" rx="14" ry="14"
-               fill="${ACCENT}" fill-opacity="0.12" stroke="${ACCENT}" stroke-opacity="0.25"/>`;
+      pill = `<rect x="${x}" y="${y - 24}" width="${w}" height="28" rx="14" ry="14"
+                   fill="${ACCENT}1f" stroke="${ACCENT}40" />`; /* 10%/25% 透明度 */
     }
 
     return `
-      <text x="24" y="${y}" font-size="22" fill="${theme.label}"
+      <text x="24" y="${y}" font-size="22" fill="${THEME.label}"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">${label}</text>
       ${pill}
       <text x="${right}" y="${y}" text-anchor="end"
             font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
-            font-size="24" font-weight="800" fill="${ACCENT}" filter="url(#glow)">${value}</text>
+            font-size="24" font-weight="800" fill="${ACCENT}">${value}</text>
     `;
   }).join("\n");
 
@@ -159,31 +197,28 @@ const card = (title, rows, opts = {}) => {
 <svg width="${width}" height="${h}" viewBox="0 0 ${width} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${title}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="${theme.bgTop}"/>
-      <stop offset="100%" stop-color="${theme.bgBottom}"/>
+      <stop offset="0%"  stop-color="${THEME.bg1}"/>
+      <stop offset="100%" stop-color="${THEME.bg2}"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="1.6" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
     <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.5" fill="${theme.dots}"/>
+      <circle cx="2" cy="2" r="1.5" fill="${THEME.dot}"/>
     </pattern>
   </defs>
 
-  <rect x="0" y="0" width="${width}" height="${h}" rx="16" ry="16" fill="url(#bg)" stroke="${theme.border}" />
+  <rect x="0" y="0" width="${width}" height="${h}" rx="16" ry="16" fill="url(#bg)" stroke="${THEME.border}" />
   <rect x="${width - 420}" y="${pad + th}" width="380" height="${h - pad*2 - th}" fill="url(#dots)" opacity="0.45"/>
 
   <g transform="translate(${pad},0)">
-    <text x="24" y="${pad + th}" font-size="30" font-weight="800" fill="${theme.title}"
+    <text x="24" y="${pad + th}" font-size="30" font-weight="800" fill="${THEME.title}"
           font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
-      ${icon ? icon + " " : ""}${title}
+      ${title}
     </text>
   </g>
 
   ${rowsSvg}
 </svg>`;
 };
+
 
 // ----------- 拉数据 & 生成 SVG -----------
 try {
