@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 20
 
-      # If triggered by schedule, auto-rotate theme
+      # 自动轮换主题（仅 schedule 触发时）
       - name: Pick theme (auto rotate)
         if: ${{ github.event_name == 'schedule' }}
         run: |
@@ -37,27 +37,29 @@ jobs:
           echo "SVG_THEME=${themes[$idx]}" >> $GITHUB_ENV
           echo "NUM_STYLE=pill" >> $GITHUB_ENV
 
-      # If manually dispatched with input, respect input.theme
+      # 手动触发时，使用输入的主题
       - name: Use manual theme (workflow_dispatch)
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.theme != '' }}
         run: echo "SVG_THEME=${{ inputs.theme }}" >> $GITHUB_ENV
 
+      # 生成 SVG
       - name: Generate real SVGs
         env:
-          GH_LOGIN:      ${{ github.repository_owner }}
-          PAT_READ_USER: ${{ secrets.PAT_READ_USER }}  # optional, include private contrib if scope allows
+          GH_LOGIN:      ${{ github.repository_owner }}   # ✅ 明确传 owner
+          GITHUB_TOKEN:  ${{ github.token }}              # ✅ 明确传 token（无私有贡献）
+          PAT_READ_USER: ${{ secrets.PAT_READ_USER }}     # 可选：要统计“私有贡献”才需要
           ACCENT:        "#22d3ee"
           NUM_STYLE:     "pill"
-          # Note: SVG_THEME comes from $GITHUB_ENV (above steps)
+          # SVG_THEME 来自上面写入的 $GITHUB_ENV
         run: |
           node --version
           node scripts/generate-svgs.mjs
           ls -la assets
 
+      # 替换 README 中图片的 ?ver= 时间戳，强制刷新缓存
       - name: Bust README image cache (?ver=timestamp)
         run: |
           TS=$(date +%s)
-          # Replace or append ?ver=TS to both images
           sed -i -E 's#(assets/(stats|streak)\.svg)(\?ver=[0-9]+)?#\1?ver='"$TS"'#g' README.md
 
       - name: Commit & push
