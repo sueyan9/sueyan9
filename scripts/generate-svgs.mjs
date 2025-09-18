@@ -36,54 +36,69 @@ const to = new Date();
 const from = new Date(to);
 from.setUTCDate(from.getUTCDate() - 365);
 
-const Q = /* GraphQL */ `
-query($login:String!, $from:DateTime!, $to:DateTime!) {
-  user(login:$login) {
-    name
-    login
-    starredRepositories { totalCount }
-    contributionsCollection(from:$from, to:$to) {
-      totalCommitContributions
-      totalPullRequestContributions
-      totalIssueContributions
-      repositoriesContributedTo(contributionTypes:[COMMIT,ISSUE,PULL_REQUEST,REPOSITORY]) {
-        totalCount
-      }
-      contributionCalendar {
-        weeks {
-          contributionDays { date contributionCount }
+// 取需要的聚合 + streak 日历 + 按仓库分组的贡献（用于“过去一年贡献过的仓库数”）
+const QUERY = /* GraphQL */ `
+  query($login: String!, $from: DateTime!, $to: DateTime!) {
+    user(login: $login) {
+      login
+      starredRepositories { totalCount }
+      contributionsCollection(from: $from, to: $to) {
+        totalCommitContributions
+        totalPullRequestContributions
+        totalIssueContributions
+
+        contributionCalendar {
+          weeks {
+            contributionDays { date contributionCount }
+          }
+        }
+
+        commitContributionsByRepository(maxRepositories: 200) {
+          repository { nameWithOwner }
+        }
+        issueContributionsByRepository(maxRepositories: 200) {
+          repository { nameWithOwner }
+        }
+        pullRequestContributionsByRepository(maxRepositories: 200) {
+          repository { nameWithOwner }
         }
       }
     }
   }
-}`;
+`;
 
-const data = await graphql(Q, { login: GH_LOGIN, from: from.toISOString(), to: to.toISOString() });
+const data = await graphql(QUERY, { login: GH_LOGIN, from: from.toISOString(), to: to.toISOString() });
 const u = data.user;
 const cc = u.contributionsCollection;
 
+// ---- 计算过去一年“参与过的仓库数”（提交/PR/Issue 的并集去重） ----
+const uniqRepos = new Set([
+  ...cc.commitContributionsByRepository.map(x => x.repository.nameWithOwner),
+  ...cc.issueContributionsByRepository.map(x => x.repository.nameWithOwner),
+  ...cc.pullRequestContributionsByRepository.map(x => x.repository.nameWithOwner),
+]);
+const contributedToLastYear = uniqRepos.size;
+
 // ---- 计算 streak（到“今天”为止的连续天数 & 历史最长） ----
-const todayISO = new Date().toISOString().slice(0, 10);
-const days = cc.contributionCalendar.weeks.flatMap(w => w.contributionDays)
-  .filter(d => d.date <= todayISO) // 过滤掉未来日期
+const days = (cc.contributionCalendar?.weeks ?? [])
+  .flatMap(w => w.contributionDays)
+  .filter(Boolean)
   .sort((a, b) => a.date.localeCompare(b.date));
 
-let current = 0, longest = 0, tmp = 0;
-let prev = null;
+let current = 0, longest = 0, tmp = 0, prev = null;
 for (const d of days) {
   const has = d.contributionCount > 0;
   if (prev) {
     const nextDay = new Date(prev);
     nextDay.setUTCDate(nextDay.getUTCDate() + 1);
-    const nextISO = nextDay.toISOString().slice(0,10);
-    const contiguous = d.date === nextISO;
+    const contiguous = d.date === nextDay.toISOString().slice(0, 10);
     if (!contiguous) tmp = 0; // 断档
   }
   tmp = has ? (tmp + 1) : 0;
   if (tmp > longest) longest = tmp;
   prev = d.date;
 }
-// 计算“当前连击”：从今天往回数
+// 当前连击：从最后一天向前
 current = 0;
 for (let i = days.length - 1; i >= 0; i--) {
   if (days[i].contributionCount > 0) current++;
@@ -113,7 +128,7 @@ const statsRows = [
   ["Total Commits (last year):", cc.totalCommitContributions.toLocaleString()],
   ["Total PRs:", cc.totalPullRequestContributions.toLocaleString()],
   ["Total Issues:", cc.totalIssueContributions.toLocaleString()],
-  ["Contributed to (last year):", cc.repositoriesContributedTo.totalCount.toLocaleString()],
+  ["Contributed to (last year):", contributedToLastYear.toString()],
 ];
 const statsSVG = card(`${u.login}'s GitHub Stats`, statsRows);
 
