@@ -1,45 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="560" height="216" viewBox="0 0 560 216"
-     xmlns="http://www.w3.org/2000/svg" role="img">
+<svg width="920" height="258" viewBox="0 0 920 258" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sueyan9's GitHub Stats">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f2fbf7"/>
     </linearGradient>
-    <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse">
-      <circle cx="1" cy="1" r="1" fill="#22d3ee" opacity="0.25"/>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#cce9dd"/>
     </pattern>
   </defs>
 
-  <rect x="0.5" y="0.5" width="559" height="215" rx="12" ry="12"
-        fill="#0b1220" stroke="#1f2937"/>
+  <rect x="0" y="0" width="920" height="258" rx="16" ry="16" fill="url(#bg)" stroke="#d8f3e6" />
+  <rect x="500" y="52" width="380" height="184" fill="url(#dots)" opacity="0.45"/>
 
-  <rect x="0" y="0" width="560" height="110" fill="url(#g)"/>
-  <rect x="420" y="146" width="130" height="60" fill="url(#dots)" opacity="0.35"/>
-
-  <text x="20" y="44" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="22" font-weight="800" fill="#e5e7eb">
-    📈 sueyan9's GitHub Stats
-  </text>
+  <g transform="translate(22,0)">
+    <text x="24" y="52" font-size="30" font-weight="800" fill="#0f3b2e"
+          font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
+      sueyan9's GitHub Stats
+    </text>
+  </g>
 
   
-      <text x="20" y="86" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="17" fill="#94a3b8">Total Stars Earned:</text>
-      <text x="540" y="86" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="700"
-            text-anchor="end" fill="#ffffff">22</text>
+      <text x="24" y="100" font-size="22" fill="#2b5c45"
+            font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Stars Earned:</text>
+      <rect x="846" y="76" width="50" height="28" rx="14" ry="14"
+                   fill="#22d3ee1f" stroke="#22d3ee40" />
+      <text x="896" y="100" text-anchor="end"
+            font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            font-size="24" font-weight="800" fill="#22d3ee">22</text>
     
-      <text x="20" y="114" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="17" fill="#94a3b8">Total Commits (last year):</text>
-      <text x="540" y="114" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="700"
-            text-anchor="end" fill="#ffffff">428</text>
+
+      <text x="24" y="134" font-size="22" fill="#2b5c45"
+            font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Commits (last year):</text>
+      <rect x="831" y="110" width="65" height="28" rx="14" ry="14"
+                   fill="#22d3ee1f" stroke="#22d3ee40" />
+      <text x="896" y="134" text-anchor="end"
+            font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            font-size="24" font-weight="800" fill="#22d3ee">428</text>
     
-      <text x="20" y="142" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="17" fill="#94a3b8">Total PRs:</text>
-      <text x="540" y="142" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="700"
-            text-anchor="end" fill="#ffffff">50</text>
+
+      <text x="24" y="168" font-size="22" fill="#2b5c45"
+            font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total PRs:</text>
+      <rect x="846" y="144" width="50" height="28" rx="14" ry="14"
+                   fill="#22d3ee1f" stroke="#22d3ee40" />
+      <text x="896" y="168" text-anchor="end"
+            font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            font-size="24" font-weight="800" fill="#22d3ee">50</text>
     
-      <text x="20" y="170" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="17" fill="#94a3b8">Total Issues:</text>
-      <text x="540" y="170" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="700"
-            text-anchor="end" fill="#ffffff">1</text>
+
+      <text x="24" y="202" font-size="22" fill="#2b5c45"
+            font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Issues:</text>
+      <rect x="861" y="178" width="35" height="28" rx="14" ry="14"
+                   fill="#22d3ee1f" stroke="#22d3ee40" />
+      <text x="896" y="202" text-anchor="end"
+            font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            font-size="24" font-weight="800" fill="#22d3ee">1</text>
     
-      <text x="20" y="198" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="17" fill="#94a3b8">Contributed to (last year):</text>
-      <text x="540" y="198" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" font-size="18" font-weight="700"
-            text-anchor="end" fill="#ffffff">10</text>
+
+      <text x="24" y="236" font-size="22" fill="#2b5c45"
+            font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Contributed to (last year):</text>
+      <rect x="846" y="212" width="50" height="28" rx="14" ry="14"
+                   fill="#22d3ee1f" stroke="#22d3ee40" />
+      <text x="896" y="236" text-anchor="end"
+            font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            font-size="24" font-weight="800" fill="#22d3ee">10</text>
     
 </svg>
