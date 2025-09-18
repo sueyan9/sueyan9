@@ -1,30 +1,30 @@
 // scripts/generate-svgs.mjs
-// Node 18+（内置 fetch）
-// 生成 assets/stats.svg 与 assets/streak.svg，支持主题 + 数字高亮 + 图标
+// Node 18+ (has global fetch)
+// Generate assets/stats.svg & assets/streak.svg with themes + number highlight
 
 import fs from "node:fs";
 import path from "node:path";
 
-// ----------- ENV -----------
+// ---------- ENV ----------
 const GH_LOGIN =
   process.env.GH_LOGIN ||
   process.env.GITHUB_REPOSITORY?.split("/")[0] ||
   "";
 
 const TOKEN =
-  process.env.PAT_READ_USER /* 优先用 PAT（可读私有贡献）*/ ||
-  process.env.GITHUB_TOKEN;  /* 回退到 Actions 的 token */
+  process.env.PAT_READ_USER /* prefer PAT for private contrib */ ||
+  process.env.GITHUB_TOKEN; /* fallback to Actions token */
 
-const SVG_THEME = (process.env.SVG_THEME || "midnight").toLowerCase(); // slate | midnight | sunset
-const ACCENT    = process.env.ACCENT || "#22d3ee";                    // 数字高亮色
-const NUM_STYLE = (process.env.NUM_STYLE || "accent").toLowerCase();  // "accent" | "pill"
+const SVG_THEME = (process.env.SVG_THEME || "default_light").toLowerCase(); // vue | ayu_light | default_light | swift | rose_pine | rose_pine_dawn | slate | midnight | sunset
+const NUM_STYLE = (process.env.NUM_STYLE || "accent").toLowerCase();       // "accent" | "pill"
+const ACCENT_ENV = process.env.ACCENT || "";                               // optional override
 
 if (!TOKEN || !GH_LOGIN) {
   console.error("Missing env: GITHUB_TOKEN/PAT_READ_USER or GH_LOGIN");
   process.exit(1);
 }
 
-// ----------- GraphQL helper -----------
+// ---------- GraphQL ----------
 const gql = async (query, variables = {}) => {
   const r = await fetch("https://api.github.com/graphql", {
     method: "POST",
@@ -44,13 +44,12 @@ const gql = async (query, variables = {}) => {
   return j.data;
 };
 
-// 最近 365 天
+// last 365 days
 const to = new Date();
 const from = new Date(to);
 from.setUTCDate(from.getUTCDate() - 365);
 
-// ----------- Query -----------
-// 注意：maxRepositories 上限 100（官方限制）
+// limit maxRepositories to 100 per API constraints
 const QUERY = /* GraphQL */ `
   query($login: String!, $from: DateTime!, $to: DateTime!) {
     user(login: $login) {
@@ -61,7 +60,6 @@ const QUERY = /* GraphQL */ `
         totalPullRequestContributions
         totalPullRequestReviewContributions
         totalIssueContributions
-
         commitContributionsByRepository(maxRepositories: 100) {
           repository { nameWithOwner }
         }
@@ -71,7 +69,6 @@ const QUERY = /* GraphQL */ `
         pullRequestContributionsByRepository(maxRepositories: 100) {
           repository { nameWithOwner }
         }
-
         contributionCalendar {
           weeks {
             contributionDays {
@@ -85,102 +82,84 @@ const QUERY = /* GraphQL */ `
   }
 `;
 
-// ----------- 主题样式 -----------
+// ---------- THEMES ----------
 const THEMES = {
-  // 纯白清爽：最接近你现在的 default_light
   default_light: {
     bg1: "#ffffff", bg2: "#f8fafc", border: "#e5e7eb",
     title: "#0f172a", label: "#475569", value: "#0b1220",
     accent: "#2563eb", dot: "#e2e8f0"
   },
-
-  // vue：浅绿+白
   vue: {
     bg1: "#ffffff", bg2: "#f2fbf7", border: "#d8f3e6",
     title: "#0f3b2e", label: "#2b5c45", value: "#0b3d2c",
     accent: "#41b883", dot: "#cce9dd"
   },
-
-  // ayu-light：米白+柔和橙
   ayu_light: {
     bg1: "#fffaf5", bg2: "#faf3ea", border: "#eee4d9",
     title: "#1f2430", label: "#6c6f93", value: "#1f2430",
     accent: "#ff9940", dot: "#e9ded1"
   },
-
-  // swift：浅色+粉紫点缀
   swift: {
     bg1: "#fff7fb", bg2: "#f5f3ff", border: "#eadff7",
     title: "#5b21b6", label: "#7c3aed", value: "#4c1d95",
     accent: "#a855f7", dot: "#e9d5ff"
   },
-
-  // rosé pine（dawn/light）
   rose_pine: { // dawn
     bg1: "#fffaf3", bg2: "#faf4ed", border: "#f2e9e1",
     title: "#575279", label: "#797593", value: "#575279",
     accent: "#b4637a", dot: "#eaddcf"
   },
-  rose_pine_dawn: { // 另一种点缀（青绿）
+  rose_pine_dawn: {
     bg1: "#fffaf3", bg2: "#faf4ed", border: "#f2e9e1",
     title: "#575279", label: "#797593", value: "#575279",
     accent: "#286983", dot: "#eaddcf"
   },
   slate: {
-    bgTop: "#f8fafc", bgBottom: "#eef2f7",
-    border: "#e5e7eb",
-    title: "#111827",
-    label: "#374151",
-    dots: "#e2e8f0"
+    bg1: "#f8fafc", bg2: "#eef2f7", border: "#e5e7eb",
+    title: "#111827", label: "#374151", value: "#0b1220",
+    accent: "#0ea5e9", dot: "#e2e8f0"
   },
   midnight: {
-    bgTop: "#0f2331", bgBottom: "#0b1622",
-    border: "#0b2534",
-    title: "#e5f2fb",
-    label: "#cbd5e1",
-    dots: "#0f2a3a"
+    bg1: "#0f2331", bg2: "#0b1622", border: "#0b2534",
+    title: "#e5f2fb", label: "#cbd5e1", value: "#ffffff",
+    accent: "#22d3ee", dot: "#0f2a3a"
   },
   sunset: {
-    bgTop: "#ffedd5", bgBottom: "#fde2c0",
-    border: "#fcd4b2",
-    title: "#7c2d12",
-    label: "#9a3412",
-    dots: "#f6c49d"
+    bg1: "#ffedd5", bg2: "#fde2c0", border: "#fcd4b2",
+    title: "#7c2d12", label: "#9a3412", value: "#7c2d12",
+    accent: "#fb923c", dot: "#f6c49d"
   }
 };
-// 友好别名
+// friendly aliases
 THEMES["ayu-light"] = THEMES.ayu_light;
 THEMES["default"] = THEMES.default_light;
 THEMES["rose_pine_light"] = THEMES.rose_pine;
 
-const SVG_THEME = (process.env.SVG_THEME || "default_light").toLowerCase();
 const THEME = THEMES[SVG_THEME] ?? THEMES.default_light;
+const ACCENT = ACCENT_ENV || THEME.accent;
 
-// 数字高亮：可被环境变量覆盖
-const ACCENT   = process.env.ACCENT   || THEME.accent;
-const NUM_STYLE = (process.env.NUM_STYLE || "accent").toLowerCase(); // "accent" | "pill"
-
-// ----------- 工具 -----------
+// ---------- helpers ----------
 const fmt = (n) => (typeof n === "number") ? n.toLocaleString("en-US") : String(n);
 
-// A themed card (gradient background + optional pill for numbers)
-const card = (title, rows, width = 920) => {
+// Themed card renderer (gradient bg + dots + optional pill numbers)
+const card = (title, rows, width = 560, icon = "") => {
   const pad = 22, th = 30, lh = 34;
   const h = pad + th + 14 + rows.length * lh + pad;
+  const right = width - 24;
 
   const estTextWidth = (s, fontSize = 22) => Math.round(String(s).length * (fontSize * 0.62)) + 20;
 
   const rowsSvg = rows.map((r, i) => {
     const y = pad + th + 14 + (i + 1) * lh;
-    const label = r[0], value = r[1];
-    const right = width - 24;
+    const [label, value] = r;
 
     let pill = "";
     if (NUM_STYLE === "pill") {
       const w = estTextWidth(value, 24);
       const x = right - w;
       pill = `<rect x="${x}" y="${y - 24}" width="${w}" height="28" rx="14" ry="14"
-                   fill="${ACCENT}1f" stroke="${ACCENT}40" />`; /* 10%/25% 透明度 */
+                    fill="${ACCENT}" fill-opacity="0.12"
+                    stroke="${ACCENT}" stroke-opacity="0.25"/>`;
     }
 
     return `
@@ -210,17 +189,14 @@ const card = (title, rows, width = 920) => {
 
   <g transform="translate(${pad},0)">
     <text x="24" y="${pad + th}" font-size="30" font-weight="800" fill="${THEME.title}"
-          font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
-      ${title}
-    </text>
+          font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">${icon ? icon + " " : ""}${title}</text>
   </g>
 
   ${rowsSvg}
 </svg>`;
 };
 
-
-// ----------- 拉数据 & 生成 SVG -----------
+// ---------- fetch & render ----------
 try {
   const data = await gql(QUERY, {
     login: GH_LOGIN,
@@ -231,14 +207,14 @@ try {
   const u = data.user;
   const cc = u.contributionsCollection;
 
-  // 去重后的 “Contributed to” 仓库数
+  // unique repo count contributed to (last year)
   const set = new Set();
   for (const x of cc.commitContributionsByRepository) set.add(x.repository.nameWithOwner);
   for (const x of cc.issueContributionsByRepository) set.add(x.repository.nameWithOwner);
   for (const x of cc.pullRequestContributionsByRepository) set.add(x.repository.nameWithOwner);
   const contributedRepos = set.size;
 
-  // ---- streak：过滤未来日期，避免当前连击被 0 终止 ----
+  // streak (exclude future days)
   const todayISO = new Date().toISOString().slice(0, 10);
   const days = cc.contributionCalendar.weeks
     .flatMap(w => w.contributionDays)
@@ -251,7 +227,7 @@ try {
       const next = new Date(prev);
       next.setUTCDate(next.getUTCDate() + 1);
       const nextISO = next.toISOString().slice(0, 10);
-      if (d.date !== nextISO) tmp = 0; // 断档
+      if (d.date !== nextISO) tmp = 0;
     }
     tmp = d.contributionCount > 0 ? (tmp + 1) : 0;
     if (tmp > longest) longest = tmp;
@@ -262,34 +238,30 @@ try {
     else break;
   }
 
-  // ------- stats.svg -------
+  // stats.svg
   const statsRows = [
-    ["Total Stars Earned:",           fmt(u.starredRepositories.totalCount)],
-    ["Total Commits (last year):",    fmt(cc.totalCommitContributions)],
-    ["Total PRs:",                    fmt(cc.totalPullRequestContributions)],
-    ["Total Issues:",                 fmt(cc.totalIssueContributions)],
-    ["Contributed to (last year):",   fmt(contributedRepos)],
+    ["Total Stars Earned:",         fmt(u.starredRepositories.totalCount)],
+    ["Total Commits (last year):",  fmt(cc.totalCommitContributions)],
+    ["Total PRs:",                  fmt(cc.totalPullRequestContributions)],
+    ["Total Issues:",               fmt(cc.totalIssueContributions)],
+    ["Contributed to (last year):", fmt(contributedRepos)],
   ];
-  const statsSVG  = card(`${u.login}'s GitHub Stats`, statsRows, {
-    width: 920, icon: "📈", theme: THEME
-  });
+  const statsSVG  = card(`${u.login}'s GitHub Stats`, statsRows, 560, "📈");
 
-  // ------- streak.svg -------
+  // streak.svg
   const streakRows = [
     ["Current Streak (days):", fmt(current)],
     ["Longest Streak (days):", fmt(longest)],
   ];
-  const streakSVG = card(`${u.login}'s Contribution Streak`, streakRows, {
-    width: 920, icon: "🔥", theme: THEME
-  });
+  const streakSVG = card(`${u.login}'s Contribution Streak`, streakRows, 560, "🔥");
 
-  // 写入
+  // write files
   const dir = path.join("assets");
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, "stats.svg"),  statsSVG,  "utf8");
   fs.writeFileSync(path.join(dir, "streak.svg"), streakSVG, "utf8");
 
-  console.log("Wrote assets/stats.svg & assets/streak.svg (theme:", SVG_THEME, "style:", NUM_STYLE, ")");
+  console.log(`Wrote assets/stats.svg & assets/streak.svg (theme=${SVG_THEME}, style=${NUM_STYLE}, accent=${ACCENT})`);
 } catch (e) {
   console.error(e);
   process.exit(1);
