@@ -1,41 +1,40 @@
 # .github/workflows/update-readme-svgs.yml
 name: Update README SVGs
+
 on:
-  schedule:
-    - cron: "17 3 * * *"   # 每天 03:17 UTC（避开整点）
   workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 1'   # 每周一 02:00 UTC 可改/删
 
 permissions:
   contents: write
-
-env:
-  USERNAME: sueyan9
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Fetch cards as static SVGs
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Generate SVGs (demo)
         run: |
-          set -e
           mkdir -p assets
-          fetch() { url="$1"; out="$2"; tmp="$(mktemp)"; 
-            echo "Fetching $url"
-            if curl -fsSL --max-time 30 "$url" -o "$tmp"; then
-              if grep -q "<svg" "$tmp"; then mv "$tmp" "$out"; echo "Saved $out"; else rm -f "$tmp"; fi
-            else rm -f "$tmp"; fi
-          }
-          fetch "https://github-readme-stats.vercel.app/api?username=${USERNAME}&hide_rank=true" "assets/stats.svg"
-          fetch "https://streak-stats.demolab.com?user=${USERNAME}" "assets/streak.svg"
-      - name: Commit changes if any
+          # 先放占位以验证 push
+          echo '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="150"><text x="20" y="80" font-size="24">stats placeholder</text></svg>' > assets/stats.svg
+          echo '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="150"><text x="20" y="80" font-size="24">streak placeholder</text></svg>' > assets/streak.svg
+          ls -la assets
+
+      - name: Commit & push
         run: |
-          if git diff --quiet -- assets; then
-            echo "No SVG changes."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add assets/*.svg
-            git commit -m "chore: refresh README SVGs [skip ci]"
-            git push
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B main
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"; exit 0
           fi
+          git commit -m "chore(assets): update stats & streak svgs"
+          git push origin main
