@@ -2,26 +2,26 @@
 <svg width="920" height="258" viewBox="0 0 920 258" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sueyan9's GitHub Stats">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="#fffaf5"/>
-      <stop offset="100%" stop-color="#faf3ea"/>
+      <stop offset="0%"  stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
     </linearGradient>
     <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.5" fill="#e9ded1"/>
+      <circle cx="2" cy="2" r="1.5" fill="#e2e8f0"/>
     </pattern>
   </defs>
 
-  <rect x="0" y="0" width="920" height="258" rx="16" ry="16" fill="url(#bg)" stroke="#eee4d9" />
+  <rect x="0" y="0" width="920" height="258" rx="16" ry="16" fill="url(#bg)" stroke="#e5e7eb" />
   <rect x="500" y="52" width="380" height="184" fill="url(#dots)" opacity="0.45"/>
 
   <g transform="translate(22,0)">
-    <text x="24" y="52" font-size="30" font-weight="800" fill="#1f2430"
+    <text x="24" y="52" font-size="30" font-weight="800" fill="#0f172a"
           font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
       sueyan9's GitHub Stats
     </text>
   </g>
 
   
-      <text x="24" y="100" font-size="22" fill="#6c6f93"
+      <text x="24" y="100" font-size="22" fill="#475569"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Stars Earned:</text>
       <rect x="846" y="76" width="50" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -30,25 +30,25 @@
             font-size="24" font-weight="800" fill="#22d3ee">22</text>
     
 
-      <text x="24" y="134" font-size="22" fill="#6c6f93"
+      <text x="24" y="134" font-size="22" fill="#475569"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Commits (last year):</text>
       <rect x="831" y="110" width="65" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
       <text x="896" y="134" text-anchor="end"
             font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
-            font-size="24" font-weight="800" fill="#22d3ee">433</text>
+            font-size="24" font-weight="800" fill="#22d3ee">456</text>
     
 
-      <text x="24" y="168" font-size="22" fill="#6c6f93"
+      <text x="24" y="168" font-size="22" fill="#475569"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total PRs:</text>
       <rect x="846" y="144" width="50" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
       <text x="896" y="168" text-anchor="end"
             font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
-            font-size="24" font-weight="800" fill="#22d3ee">50</text>
+            font-size="24" font-weight="800" fill="#22d3ee">51</text>
     
 
-      <text x="24" y="202" font-size="22" fill="#6c6f93"
+      <text x="24" y="202" font-size="22" fill="#475569"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Issues:</text>
       <rect x="861" y="178" width="35" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -57,12 +57,12 @@
             font-size="24" font-weight="800" fill="#22d3ee">1</text>
     
 
-      <text x="24" y="236" font-size="22" fill="#6c6f93"
+      <text x="24" y="236" font-size="22" fill="#475569"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Contributed to (last year):</text>
       <rect x="846" y="212" width="50" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
       <text x="896" y="236" text-anchor="end"
             font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
-            font-size="24" font-weight="800" fill="#22d3ee">10</text>
+            font-size="24" font-weight="800" fill="#22d3ee">11</text>
     
 </svg>
