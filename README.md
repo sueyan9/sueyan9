@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  💻 Final-year <strong>Bachelor of Computer and Information Science</strong> student<br>
+  💻 <strong>Bachelor of Computer and Information Science</strong><br>
   🧠 Passionate about <strong>Full-Stack</strong> development, <strong>3D UI</strong>, and <strong>cloud platforms</strong><br>
   🌍 Based in <strong>New Zealand</strong>
 </p>
