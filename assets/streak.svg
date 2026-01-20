@@ -2,26 +2,26 @@
 <svg width="920" height="156" viewBox="0 0 920 156" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="sueyan9's Contribution Streak">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#f2fbf7"/>
+      <stop offset="0%"  stop-color="#0f2331"/>
+      <stop offset="100%" stop-color="#0b1622"/>
     </linearGradient>
     <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.5" fill="#cce9dd"/>
+      <circle cx="2" cy="2" r="1.5" fill="#0f2a3a"/>
     </pattern>
   </defs>
 
-  <rect x="0" y="0" width="920" height="156" rx="16" ry="16" fill="url(#bg)" stroke="#d8f3e6" />
+  <rect x="0" y="0" width="920" height="156" rx="16" ry="16" fill="url(#bg)" stroke="#0b2534" />
   <rect x="500" y="52" width="380" height="82" fill="url(#dots)" opacity="0.45"/>
 
   <g transform="translate(22,0)">
-    <text x="24" y="52" font-size="30" font-weight="800" fill="#0f3b2e"
+    <text x="24" y="52" font-size="30" font-weight="800" fill="#e5f2fb"
           font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
       sueyan9's Contribution Streak
     </text>
   </g>
 
   
-      <text x="24" y="100" font-size="22" fill="#2b5c45"
+      <text x="24" y="100" font-size="22" fill="#cbd5e1"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Current Streak (days):</text>
       <rect x="861" y="76" width="35" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -30,7 +30,7 @@
             font-size="24" font-weight="800" fill="#22d3ee">0</text>
     
 
-      <text x="24" y="134" font-size="22" fill="#2b5c45"
+      <text x="24" y="134" font-size="22" fill="#cbd5e1"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Longest Streak (days):</text>
       <rect x="846" y="110" width="50" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
