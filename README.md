@@ -4,7 +4,8 @@
 
 <p align="center">
   💻 <strong>Bachelor of Computer and Information Science</strong><br>
-  🧠 Passionate about <strong>Full-Stack</strong> development, <strong>3D UI</strong>, and <strong>cloud platforms</strong><br>
+  🧠 Full-Stack developer who enjoys using technology to solve everyday problems<br>
+  🤖 Learning cloud platforms and AI technologies through projects<br>
   🌍 Based in <strong>New Zealand</strong>
 </p>
 
