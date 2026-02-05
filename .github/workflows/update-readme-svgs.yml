@@ -45,8 +45,8 @@ jobs:
       # 生成 SVG
       - name: Generate real SVGs
         env:
-          GH_LOGIN:      ${{ github.repository_owner }}   # ✅ 明确传 owner
-          GITHUB_TOKEN:  ${{ github.token }}              # ✅ 明确传 token（无私有贡献）
+          GH_LOGIN:      ${{ github.repository_owner }}   #  明确传 owner
+          GITHUB_TOKEN:  ${{ github.token }}              #  明确传 token（无私有贡献）
           PAT_READ_USER: ${{ secrets.PAT_READ_USER }}     # 可选：要统计“私有贡献”才需要
           ACCENT:        "#22d3ee"
           NUM_STYLE:     "pill"
@@ -64,8 +64,12 @@ jobs:
 
       - name: Commit & push
         run: |
+          set -euxo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git status
           git add assets README.md
-          git diff --cached --quiet || git commit -m "chore: update SVGs (theme=$SVG_THEME)"
-          git push
+          git diff --cached --name-only
+          git diff --cached --quiet || git commit -m "chore: update SVGs (theme=${SVG_THEME:-vue})"
+          git push origin HEAD
+
