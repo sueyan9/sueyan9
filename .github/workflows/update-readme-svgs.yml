@@ -63,7 +63,15 @@ jobs:
       - name: Bust README image cache (?ver=timestamp)
         run: |
           TS=$(date +%s)
-          sed -i -E 's#(assets/(stats|streak)\.svg)(\?ver=[0-9]+)?#\1?ver='"$TS"'#g' README.md
+          # match: assets/... or ./assets/... or /assets/...
+          sed -i -E 's#(\.?/?assets/(stats|streak)\.svg)(\?ver=[0-9]+)?#\1?ver='"$TS"'#g' README.md
+          grep -nE "\.?/?assets/(stats|streak)\.svg\?ver=" README.md || true
+      - name: Debug README ver
+        run: |
+          echo "---- README ver lines ----"
+          grep -nE "\.?/?assets/(stats|streak)\.svg\?ver=" README.md || true
+          echo "---- git diff ----"
+          git diff README.md || true
 
       - name: Commit & push
         run: |
