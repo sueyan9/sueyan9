@@ -50,6 +50,9 @@ jobs:
           PAT_READ_USER: ${{ secrets.PAT_READ_USER }}     # 可选：要统计“私有贡献”才需要
           ACCENT:        "#22d3ee"
           NUM_STYLE:     "pill"
+          STATS_RANGE: "all_time"          # 或 this_year / last_year
+          TZ: "Pacific/Auckland"
+
           # SVG_THEME 来自上面写入的 $GITHUB_ENV
         run: |
           node --version
