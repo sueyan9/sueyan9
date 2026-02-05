@@ -233,4 +233,174 @@ const THEMES = {
     dot: "#f6c49d",
   },
 };
-THE
+THEMES["ayu-light"] = THEMES.ayu_light;
+THEMES["default"] = THEMES.default_light;
+THEMES["rose_pine_light"] = THEMES.rose_pine;
+
+const THEME = THEMES[SVG_THEME] ?? THEMES.default_light;
+const VALUE_COLOR = ACCENT || THEME.accent;
+
+// ---------- SVG Card ----------
+const card = (title, rows, width = 920) => {
+  const pad = 22,
+    th = 30,
+    lh = 34;
+  const h = pad + th + 14 + rows.length * lh + pad;
+
+  const estTextWidth = (s, fontSize = 22) =>
+    Math.round(String(s).length * (fontSize * 0.62)) + 20;
+
+  const rowsSvg = rows
+    .map((r, i) => {
+      const y = pad + th + 14 + (i + 1) * lh;
+      const label = r[0],
+        value = r[1];
+      const right = width - 24;
+
+      let pill = "";
+      if (NUM_STYLE === "pill") {
+        const w = estTextWidth(value, 24);
+        const x = right - w;
+        pill = `<rect x="${x}" y="${y - 24}" width="${w}" height="28" rx="14" ry="14"
+                   fill="${VALUE_COLOR}1f" stroke="${VALUE_COLOR}40" />`;
+      }
+
+      return `
+      <text x="24" y="${y}" font-size="22" fill="${THEME.label}"
+            font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">${label}</text>
+      ${pill}
+      <text x="${right}" y="${y}" text-anchor="end"
+            font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace"
+            font-size="24" font-weight="800" fill="${VALUE_COLOR}">${value}</text>
+    `;
+    })
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="${width}" height="${h}" viewBox="0 0 ${width} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${title}">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="${THEME.bg1}"/>
+      <stop offset="100%" stop-color="${THEME.bg2}"/>
+    </linearGradient>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="${THEME.dot}"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="${width}" height="${h}" rx="16" ry="16" fill="url(#bg)" stroke="${THEME.border}" />
+  <rect x="${width - 420}" y="${pad + th}" width="380" height="${h - pad * 2 - th}" fill="url(#dots)" opacity="0.45"/>
+
+  <g transform="translate(${pad},0)">
+    <text x="24" y="${pad + th}" font-size="30" font-weight="800" fill="${THEME.title}"
+          font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
+      ${title}
+    </text>
+  </g>
+
+  ${rowsSvg}
+</svg>`;
+};
+
+// ---------- Main ----------
+try {
+  const data = await gql(QUERY, {
+    login: GH_LOGIN,
+    statsFrom: statsFrom.toISOString(),
+    statsTo: statsTo.toISOString(),
+    streakFrom: streakFrom.toISOString(),
+    streakTo: streakTo.toISOString(),
+  });
+
+  const u = data.user;
+  const cc = u.stats;
+  const streakCC = u.streak;
+
+  // ---- Contributed repos (dedup) based on stats window ----
+  const set = new Set();
+  for (const x of cc.commitContributionsByRepository) set.add(x.repository.nameWithOwner);
+  for (const x of cc.issueContributionsByRepository) set.add(x.repository.nameWithOwner);
+  for (const x of cc.pullRequestContributionsByRepository) set.add(x.repository.nameWithOwner);
+  const contributedRepos = set.size;
+
+  // ---- Streak calculation (timezone-aware "today") ----
+  const todayISO = todayISOInTZ(TZ);
+
+  const days = streakCC.contributionCalendar.weeks
+    .flatMap((w) => w.contributionDays)
+    .filter((d) => d.date <= todayISO)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  // Build map for quick lookup
+  const dayMap = new Map(days.map((d) => [d.date, d.contributionCount]));
+
+  // Current streak: count backwards from today in TZ
+  let current = 0;
+  let cursor = todayISO;
+  while (dayMap.has(cursor) && dayMap.get(cursor) > 0) {
+    current += 1;
+    cursor = addDaysISO_UTC(cursor, -1);
+  }
+
+  // Longest streak within the fetched window
+  let longest = 0;
+  let tmp = 0;
+  let prev = null;
+
+  for (const d of days) {
+    if (prev) {
+      const expected = addDaysISO_UTC(prev, 1);
+      if (d.date !== expected) tmp = 0;
+    }
+    tmp = d.contributionCount > 0 ? tmp + 1 : 0;
+    if (tmp > longest) longest = tmp;
+    prev = d.date;
+  }
+
+  // ---- stats.svg ----
+  const label = rangeLabel(STATS_RANGE);
+
+  const statsRows = [
+    ["Total Stars Earned:", fmt(u.starredRepositories.totalCount)],
+    [`Total Commits (${label}):`, fmt(cc.totalCommitContributions)],
+    ["Total PRs:", fmt(cc.totalPullRequestContributions)],
+    ["Total Issues:", fmt(cc.totalIssueContributions)],
+    [`Contributed to (${label}):`, fmt(contributedRepos)],
+  ];
+  const statsSVG = card(`${u.login}'s GitHub Stats`, statsRows, 920);
+
+  // ---- streak.svg ----
+  const streakRows = [
+    ["Current Streak (days):", fmt(current)],
+    ["Longest Streak (days):", fmt(longest)],
+  ];
+  const streakSVG = card(`${u.login}'s Contribution Streak`, streakRows, 920);
+
+  // ---- write files ----
+  const dir = path.join("assets");
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "stats.svg"), statsSVG, "utf8");
+  fs.writeFileSync(path.join(dir, "streak.svg"), streakSVG, "utf8");
+
+  // helpful logs (won't leak token)
+  console.log(
+    "Wrote assets/stats.svg & assets/streak.svg",
+    "| theme:",
+    SVG_THEME,
+    "| style:",
+    NUM_STYLE,
+    "| range:",
+    STATS_RANGE,
+    "| TZ:",
+    TZ,
+    "| todayISO:",
+    todayISO,
+    "| current:",
+    current,
+    "| longest:",
+    longest
+  );
+} catch (e) {
+  console.error(e);
+  process.exit(1);
+}
