@@ -58,9 +58,8 @@ const rangeLabel = (r) => {
   return "last year";
 };
 // GitHub API: "The total time spanned by 'from' and 'to' must not exceed 1 year"
-// They count inclusively (from+to = 2 days), so N days back = (N+1) days spanned. Use 363 → 364 days spanned.
 const MAX_DAYS = 364; // for stats clamp
-const MAX_STREAK_DAYS = 363; // for streak: 363 days back = 364 days spanned (< 365)
+const MAX_STREAK_DAYS = 360; // streak: 360 days back to stay safely under 365 (API is strict)
 
 const clampFrom = (from, to = new Date()) => {
   const min = new Date(to);
@@ -112,6 +111,13 @@ streakTo.setUTCHours(0, 0, 0, 0);
 
 let streakFrom = new Date(streakTo);
 streakFrom.setUTCDate(streakFrom.getUTCDate() - MAX_STREAK_DAYS);
+
+const streakSpanDays = Math.round((streakTo - streakFrom) / (24 * 60 * 60 * 1000));
+if (streakSpanDays > 365) {
+  console.error("Streak span too large:", streakSpanDays, "days. from:", streakFrom.toISOString(), "to:", streakTo.toISOString());
+  process.exit(1);
+}
+console.log("Streak range:", streakFrom.toISOString(), "->", streakTo.toISOString(), "(", streakSpanDays, "days )");
 
 // ---------- Query (two collections via aliases) ----------
 const QUERY = /* GraphQL */ `
