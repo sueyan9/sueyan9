@@ -1,5 +1,9 @@
 name: Update README SVGs
 
+concurrency:
+  group: update-readme-svgs
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
     inputs:
@@ -21,13 +25,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0   # 完整历史，方便 pull --rebase
+
+      # 1. 先同步远程分支，保证后面生成基于最新 main
+      - name: Sync with remote
+        run: |
+          git pull --rebase origin "${{ github.ref_name }}"
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 自动轮换主题（仅 schedule 触发时）
       - name: Pick theme (auto rotate)
         if: ${{ github.event_name == 'schedule' }}
         run: |
@@ -36,10 +46,12 @@ jobs:
           echo "SVG_THEME=${themes[$idx]}" >> $GITHUB_ENV
           echo "NUM_STYLE=pill" >> $GITHUB_ENV
 
+      # 手动触发时，使用输入的主题
       - name: Use manual theme (workflow_dispatch)
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.theme != '' }}
         run: echo "SVG_THEME=${{ inputs.theme }}" >> $GITHUB_ENV
 
+      # 生成 SVG（使用最新代码生成）
       - name: Generate real SVGs
         env:
           GH_LOGIN:      ${{ github.repository_owner }}
@@ -47,13 +59,14 @@ jobs:
           PAT_READ_USER: ${{ secrets.PAT_READ_USER }}
           ACCENT:        "#22d3ee"
           NUM_STYLE:     "pill"
-          STATS_RANGE:   "all_time"
+          STATS_RANGE:   "all_time"          # 或 this_year / last_year
           TZ:            "Pacific/Auckland"
         run: |
           node --version
           node scripts/generate-svgs.mjs
           ls -la assets
 
+      # 替换 README 中图片的 ?ver= 时间戳，强制刷新缓存
       - name: Bust README image cache (?ver=timestamp)
         run: |
           TS=$(date +%s)
@@ -67,6 +80,7 @@ jobs:
           echo "---- git diff ----"
           git diff README.md || true
 
+      # 提交并推送
       - name: Commit & push
         run: |
           set -euxo pipefail
@@ -75,6 +89,4 @@ jobs:
           git status
           git add assets README.md
           git diff --cached --quiet || git commit -m "chore: update SVGs (theme=${SVG_THEME:-vue})"
-          git pull --rebase origin "${{ github.ref_name }}"
           git push origin "${{ github.ref_name }}"
-
