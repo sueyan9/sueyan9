@@ -77,4 +77,4 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: update SVGs (theme=${SVG_THEME:-vue})"
           git pull --rebase origin "${{ github.ref_name }}"
           git push origin "${{ github.ref_name }}"
-```
+
