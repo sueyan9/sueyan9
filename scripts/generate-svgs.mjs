@@ -54,8 +54,15 @@ const addDaysISO_UTC = (isoDate, deltaDays) => {
 
 const rangeLabel = (r) => {
   if (r === "this_year") return "this year";
-  if (r === "all_time") return "all time";
+  if (r === "all_time") return "last 12 months";
   return "last year";
+};
+const MAX_DAYS = 365;
+
+const clampFrom = (from, to = new Date()) => {
+  const min = new Date(to);
+  min.setUTCDate(min.getUTCDate() - MAX_DAYS);
+  return from < min ? min : from;
 };
 
 // ---------- GraphQL ----------
@@ -89,15 +96,13 @@ const statsTo = now;
 if (STATS_RANGE === "this_year") {
   const y = now.getUTCFullYear();
   statsFrom = new Date(Date.UTC(y, 0, 1, 0, 0, 0));
-} else if (STATS_RANGE === "all_time") {
- // GitHub API hard limit: max 1 year
-  statsFrom = new Date(statsTo);
-  statsFrom.setUTCDate(statsFrom.getUTCDate() - 365);
 } else {
   // last_year default
   statsFrom = new Date(statsTo);
   statsFrom.setUTCDate(statsFrom.getUTCDate() - 365);
 }
+ statsFrom = clampFrom(statsFrom, statsTo);
+
 
 // Streak window (fixed recent window to keep payload small & streak accurate)
 const streakTo = now;
