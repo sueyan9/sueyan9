@@ -104,15 +104,18 @@ if (STATS_RANGE === "this_year") {
  statsFrom = clampFrom(statsFrom, statsTo);
 
 
-// Streak window (fixed recent window to keep payload small & streak accurate)
-const streakTo = new Date(now);
-streakTo.setUTCHours(0, 0, 0, 0);
+// --------- SAFE streak window (GitHub compliant) ---------
+const todayUTC = new Date();
+todayUTC.setUTCHours(0, 0, 0, 0);
 
-let streakFrom = new Date(streakTo);
-streakFrom.setUTCDate(streakFrom.getUTCDate() - 363); 
+// IMPORTANT:
+// use "yesterday" as `to`, NOT now / today
+const streakTo = new Date(todayUTC);
+streakTo.setUTCDate(streakTo.getUTCDate() - 1);
 
-
-
+// fixed 364-day window (inclusive)
+const streakFrom = new Date(streakTo);
+streakFrom.setUTCDate(streakFrom.getUTCDate() - 363);
 
 // ---------- Query (two collections via aliases) ----------
 const QUERY = /* GraphQL */ `
