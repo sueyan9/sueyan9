@@ -90,8 +90,9 @@ if (STATS_RANGE === "this_year") {
   const y = now.getUTCFullYear();
   statsFrom = new Date(Date.UTC(y, 0, 1, 0, 0, 0));
 } else if (STATS_RANGE === "all_time") {
-  // keep it early but safe
-  statsFrom = new Date(Date.UTC(2008, 0, 1, 0, 0, 0));
+ // GitHub API hard limit: max 1 year
+  statsFrom = new Date(statsTo);
+  statsFrom.setUTCDate(statsFrom.getUTCDate() - 365);
 } else {
   // last_year default
   statsFrom = new Date(statsTo);
