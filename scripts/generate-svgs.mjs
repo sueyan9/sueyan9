@@ -107,7 +107,7 @@ if (STATS_RANGE === "this_year") {
 // Streak window (fixed recent window to keep payload small & streak accurate)
 const streakTo = now;
 const streakFrom = new Date(streakTo);
-streakFrom.setUTCDate(streakFrom.getUTCDate() - 365);
+streakFrom.setUTCDate(streakFrom.getUTCDate() - 364);
 
 // ---------- Query (two collections via aliases) ----------
 const QUERY = /* GraphQL */ `
