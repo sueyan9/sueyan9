@@ -57,7 +57,8 @@ const rangeLabel = (r) => {
   if (r === "all_time") return "last 12 months";
   return "last year";
 };
-const MAX_DAYS = 365;
+// GitHub API: "The total time spanned by 'from' and 'to' must not exceed 1 year"
+const MAX_DAYS = 364; // use 364 to stay strictly under 365
 
 const clampFrom = (from, to = new Date()) => {
   const min = new Date(to);
@@ -101,21 +102,14 @@ if (STATS_RANGE === "this_year") {
   statsFrom = new Date(statsTo);
   statsFrom.setUTCDate(statsFrom.getUTCDate() - 365);
 }
- statsFrom = clampFrom(statsFrom, statsTo);
+statsFrom = clampFrom(statsFrom, statsTo);
 
+// Streak window: must not exceed 1 year (use MAX_DAYS so API validation passes)
+const streakTo = new Date(now);
+streakTo.setUTCHours(0, 0, 0, 0);
 
-// --------- SAFE streak window (GitHub compliant) ---------
-const todayUTC = new Date();
-todayUTC.setUTCHours(0, 0, 0, 0);
-
-// IMPORTANT:
-// use "yesterday" as `to`, NOT now / today
-const streakTo = new Date(todayUTC);
-streakTo.setUTCDate(streakTo.getUTCDate() - 1);
-
-// fixed 364-day window (inclusive)
-const streakFrom = new Date(streakTo);
-streakFrom.setUTCDate(streakFrom.getUTCDate() - 363);
+let streakFrom = new Date(streakTo);
+streakFrom.setUTCDate(streakFrom.getUTCDate() - MAX_DAYS);
 
 // ---------- Query (two collections via aliases) ----------
 const QUERY = /* GraphQL */ `
