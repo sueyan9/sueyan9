@@ -76,7 +76,7 @@
 
 ## 📫 Contact Me
 - 💬 [![Discord](https://img.shields.io/badge/Discord-%23sueyan-5865F2?logo=discord&logoColor=white)](https://discord.com/)
-- 💼 [LinkedIn][xu-yan-b74a72274](https://www.linkedin.com/in/xu-yan-b74a72274/)
+- 💼 [LinkedIn][Sue-yan-b74a72274](https://www.linkedin.com/in/sue-yan-b74a72274/)
   
 ##
 <h1 align="center">
