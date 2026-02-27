@@ -3,25 +3,25 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"  stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f2fbf7"/>
     </linearGradient>
     <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.5" fill="#e2e8f0"/>
+      <circle cx="2" cy="2" r="1.5" fill="#cce9dd"/>
     </pattern>
   </defs>
 
-  <rect x="0" y="0" width="920" height="258" rx="16" ry="16" fill="url(#bg)" stroke="#e5e7eb" />
+  <rect x="0" y="0" width="920" height="258" rx="16" ry="16" fill="url(#bg)" stroke="#d8f3e6" />
   <rect x="500" y="52" width="380" height="184" fill="url(#dots)" opacity="0.45"/>
 
   <g transform="translate(22,0)">
-    <text x="24" y="52" font-size="30" font-weight="800" fill="#0f172a"
+    <text x="24" y="52" font-size="30" font-weight="800" fill="#0f3b2e"
           font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">
       sueyan9's GitHub Stats
     </text>
   </g>
 
   
-      <text x="24" y="100" font-size="22" fill="#475569"
+      <text x="24" y="100" font-size="22" fill="#2b5c45"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Stars Earned:</text>
       <rect x="846" y="76" width="50" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -30,7 +30,7 @@
             font-size="24" font-weight="800" fill="#22d3ee">22</text>
     
 
-      <text x="24" y="134" font-size="22" fill="#475569"
+      <text x="24" y="134" font-size="22" fill="#2b5c45"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Commits (last 12 months):</text>
       <rect x="831" y="110" width="65" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -39,7 +39,7 @@
             font-size="24" font-weight="800" fill="#22d3ee">288</text>
     
 
-      <text x="24" y="168" font-size="22" fill="#475569"
+      <text x="24" y="168" font-size="22" fill="#2b5c45"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total PRs:</text>
       <rect x="846" y="144" width="50" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -48,7 +48,7 @@
             font-size="24" font-weight="800" fill="#22d3ee">43</text>
     
 
-      <text x="24" y="202" font-size="22" fill="#475569"
+      <text x="24" y="202" font-size="22" fill="#2b5c45"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Total Issues:</text>
       <rect x="861" y="178" width="35" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
@@ -57,7 +57,7 @@
             font-size="24" font-weight="800" fill="#22d3ee">0</text>
     
 
-      <text x="24" y="236" font-size="22" fill="#475569"
+      <text x="24" y="236" font-size="22" fill="#2b5c45"
             font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial">Contributed to (last 12 months):</text>
       <rect x="861" y="212" width="35" height="28" rx="14" ry="14"
                    fill="#22d3ee1f" stroke="#22d3ee40" />
