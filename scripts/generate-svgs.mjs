@@ -54,7 +54,7 @@ const addDaysISO_UTC = (isoDate, deltaDays) => {
 
 const rangeLabel = (r) => {
   if (r === "this_year") return "this year";
-  if (r === "all_time") return "last 12 months";
+  if (r === "all_time") return "all time";
   return "last year";
 };
 // GitHub API: "The total time spanned by 'from' and 'to' must not exceed 1 year"
