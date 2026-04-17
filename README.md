@@ -42,7 +42,7 @@
 
 ## 🚀 Tech Stack
 
-<p align="center">
+<div align="center">
   <!-- 第一行 -->
   <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="40" />
@@ -59,8 +59,8 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40" title="Spring Boot"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="40" />
-</p>
-<p align="center">
+</div>
+<div align="center">
   <!-- second line -->
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" width="40" height="40"/>
@@ -71,12 +71,12 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" width="40" height="40"/>
   <img src="https://img.icons8.com/color/48/3d-printer.png" width="40" alt="3D Printing" />
   <img src="https://www.rhino3d.com/images/rhino-logo.png" width="40" alt="Rhino" />
-</p>
+</div>
 
 
 ## 📫 Contact Me
 - 💬 [![Discord](https://img.shields.io/badge/Discord-%23sueyan-5865F2?logo=discord&logoColor=white)](https://discord.com/)
-- 💼 [LinkedIn][Sue-yan-b74a72274](https://www.linkedin.com/in/sue-yan-b74a72274/)
+- 💼 [LinkedIn](https://www.linkedin.com/in/sue-yan-b74a72274/)
   
 ##
 <h1 align="center">
