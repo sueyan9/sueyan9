@@ -3,9 +3,12 @@
 </p>
 
 <p align="center">
-  🚀 Full-Stack Developer building practical and scalable software solutions  
-  ☁️ Experienced in modern web development, cloud technologies, and AI-powered applications  
-  🧠 Passionate about designing reliable products from ideas to deployment  
+  🚀 Full-Stack Developer building real-world software solutions 
+   <br/>
+  ☁️ Working with cloud platforms, AI engineering, and modern application architectures  
+   <br/>
+  🧠 Passionate about turning ideas into reliable products through technology  
+   <br/>
   🌍 Based in New Zealand
 </p>
 
