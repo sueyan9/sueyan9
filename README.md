@@ -3,10 +3,10 @@
 </p>
 
 <p align="center">
-  💻 <strong>Bachelor of Computer and Information Science</strong><br>
-  🧠 Full-Stack developer who enjoys using technology to solve everyday problems<br>
-  🤖 Learning cloud platforms and AI technologies through projects<br>
-  🌍 Based in <strong>New Zealand</strong>
+  🚀 Full-Stack Developer building practical and scalable software solutions  
+  ☁️ Experienced in modern web development, cloud technologies, and AI-powered applications  
+  🧠 Passionate about designing reliable products from ideas to deployment  
+  🌍 Based in New Zealand
 </p>
 
 ## 📈 GitHub Metrics
