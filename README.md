@@ -31,10 +31,10 @@
 <table>
   <tr>
     <td>
-      <img height="170" src="./assets/stats.svg?ver=1788250689" />
+      <img height="170" src="./assets/stats.svg?ver=1788334702" />
     </td>
     <td>
-      <img height="170" src="./assets/streak.svg?ver=1788250689" />
+      <img height="170" src="./assets/streak.svg?ver=1788334702" />
     </td>
   </tr>
 </table>
