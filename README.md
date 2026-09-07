@@ -39,10 +39,6 @@
   </tr>
 </table>
 
-
-## 📉 GitHub Activity Graph
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=sueyan9&theme=github-compact" />
-
 ## 🚀 Tech Stack
 
 <div align="center">
